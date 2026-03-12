@@ -293,6 +293,7 @@ export default function EnhancedTable() {
                 <TableRow
                   style={{
                     height: 33 * emptyRows,
+                    marginBottom: "1rem",
                   }}
                 >
                   <TableCell colSpan={headCells.length} />{" "}

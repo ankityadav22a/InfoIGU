@@ -1,11 +1,13 @@
 import ShowProfession from "./ShowProfession";
 import ShowData from "./ShowData";
+import * as constants from "./constants";
+import ShowResearch from "./ShowResearch";
 
 const ProfileResume = (props: any) => {
   const titleStyleh2 = "text-2xl text-[#0067B3] mt-2 mb-4";
   const titleStyleh3 = "text-xl  mb-4";
   return (
-    <div className="w-3/5 bg-[#f0f0f0] p-2 text-black hide-scrollbar min-h-20  rounded-2xl overflow-y-auto ">
+    <div className="w-auto bg-[#f0f0f0] p-2 text-black hide-scrollbar min-h-20  rounded-2xl overflow-y-auto ">
       {props.researchinterests && (
         <>
           <h2 className={titleStyleh2} id="researchinterests">
@@ -14,74 +16,101 @@ const ProfileResume = (props: any) => {
           <p>{props.researchinterests}</p>
         </>
       )}
-=======
-    const titleStyleh2 = "text-2xl text-[#0067B3] mt-2 mb-4"
-    const titleStyleh3 = "text-xl  mb-4"
-    return (
-        <div className='w-3/5 bg-[#f0f0f0] p-2 text-black hide-scrollbar min-h-20  rounded-2xl overflow-y-auto '>
 
-            {props.researchinterests && (
-                <>
-                    <h2 className={titleStyleh2} id='researchinterests'>RESEARCH INTERESTS</h2>
-                    <p>{props.researchinterests}</p>
-                </>
-            )}
+      {props.biosketch && (
+        <>
+          <h2 className={titleStyleh2}>BIO SKETCH</h2>
+          <h3 className={titleStyleh3} id="educationaldetails">
+            Educational Details
+          </h3>
+          <ShowProfession data={constants.professionData} />
+          <h3 className={titleStyleh3} id="professionalbackground">
+            Proffessional Background
+          </h3>
+          <ShowProfession data={constants.professionData} />
+        </>
+      )}
+      {props.research && (
+        <>
+          <h2 className={titleStyleh2}>RESEARCH</h2>
+          <h3 className={titleStyleh3} id="projects">
+            Projects
+          </h3>
+          <ShowResearch />
+          <h3 className={titleStyleh3} id="publications">
+            Publications
+          </h3>
+          <ShowData />
+          <h3 className={titleStyleh3} id="patents">
+            Patents
+          </h3>
+          <ShowData />
+          <h3 className={titleStyleh3} id="books">
+            Books
+          </h3>
+          <ShowData />
+          <h3 className={titleStyleh3} id="collaborations">
+            Collaborations
+          </h3>
+          <ShowData />
+        </>
+      )}
+      {props.honors && (
+        <>
+          <h2 className={titleStyleh2}>HONORS & AWARDS</h2>
+          <h3 className={titleStyleh3} id="honors">
+            Honors
+          </h3>
+          <ShowProfession data={constants.professionData} />
+          {/* <ShowProfession /> */}
+          <h3 className={titleStyleh3} id="memberships">
+            Memberships
+          </h3>
+          <ShowProfession data={constants.professionData} />
+          {/* <ShowProfession /> */}
+        </>
+      )}
+      {props.teacherengagement && (
+        <>
+          <h2 className={titleStyleh2}>TEACHER ENGAGEMENT</h2>
+          <ShowProfession data={constants.professionData} />
+        </>
+      )}
 
-            {props.biosketch && (
-                <>
-                    <h2 className={titleStyleh2}>BIO SKETCH</h2>
-                    <h3 className={titleStyleh3} >Educational Details</h3>
-                    <ShowProfession />
-                    <h3 className={titleStyleh3}>Proffessional Background</h3>
-                    <ShowProfession />
-                </>
-            )}
-            {props.research && (
-                <>
-                    <h2 className={titleStyleh2}>RESEARCH</h2>
-                    <h3 className={titleStyleh3}>Projects</h3>
-                    <ShowData />
-                    <h3 className={titleStyleh3}>Publications</h3>
-                    <ShowData />
-                    <h3 className={titleStyleh3}>Patents</h3>
-                    <ShowData />
-                    <h3 className={titleStyleh3}>Books</h3>
-                    <ShowData />
-                    <h3 className={titleStyleh3}>Collaborations</h3>
-                    <ShowData />
-                </>
-            )}
-            {props.honors && (
-                <>
-                    <h2 className={titleStyleh2}>HONORS & AWARDS</h2>
-                    <h3 className={titleStyleh3}>Honors</h3>
-                    <ShowProfession />
-                    <h3 className={titleStyleh3}>Memberships</h3>
-                    <ShowProfession />
-                </>
-            )}
-            {props.students && (
-                <>
-                    <h2 className={titleStyleh2}>STUDENTS</h2>
-                    <h3 className={titleStyleh3}>Supervisions</h3>
-                    <ShowProfession />
-                    <h3 className={titleStyleh3}>Associate Scholars</h3>
-                    <ShowProfession />
-                </>
-            )}
-            {props.miscellaneous && (
-                <>
-                    <h2 className={titleStyleh2}>MISCELLANEOUS</h2>
-                    <h3 className={titleStyleh3}>Supervisions</h3>
-                    <ShowProfession />
-                    <h3 className={titleStyleh3}>Associate Scholars</h3>
-                    <ShowProfession />
-                </>
-            )}
+      {props.students && (
+        <>
+          <h2 className={titleStyleh2}>STUDENTS</h2>
+          <h3 className={titleStyleh3} id="supervisions">
+            Supervisions
+          </h3>
+          <ShowProfession data={constants.professionData} />
+          {/* <ShowProfession /> */}
+          <h3 className={titleStyleh3} id="associatescholars">
+            Associate Scholars
+          </h3>
+          <ShowProfession data={constants.professionData} />
+          {/* <ShowProfession /> */}
+        </>
+      )}
+      {props.miscellaneous && (
+        <div>
+          <h2 className={titleStyleh2}>MISCELLANEOUS</h2>
+          <h3 className={titleStyleh3} id="supervisions">
+            Supervisions
+          </h3>
+          <ShowProfession data={constants.professionData} />
 
+          {/* <ShowProfession /> */}
+          <h3 className={titleStyleh3} id="associatescholars">
+            Associate Scholars
+          </h3>
+          <ShowProfession data={constants.professionData} />
 
+          {/* <ShowProfession /> */}
         </div>
-    )
-}
+      )}
+    </div>
+  );
+};
 
 export default ProfileResume;
