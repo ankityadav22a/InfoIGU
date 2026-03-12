@@ -5,27 +5,25 @@ import TableContainer from "@mui/material/TableContainer";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 
-export default function ShowProfession({
+export default function ShowPublication({
   data,
 }: {
   data: {
-    profession: string;
-    dateRange: string;
+    Publication: string;
   }[];
 }) {
   return (
     <TableContainer component={Paper}>
-      <Table sx={{ minWidth: 650 }} aria-label="profession table">
+      <Table sx={{ minWidth: 650 }} aria-label="publication table">
         <TableBody>
           {data.map((row) => (
             <TableRow
-              key={row.profession}
+              key={row.Publication}
               sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
             >
               <TableCell component="th" scope="row">
-                {row.profession}
+                {row.Publication}
               </TableCell>
-              <TableCell align="right">{row.dateRange}</TableCell>
             </TableRow>
           ))}
         </TableBody>
