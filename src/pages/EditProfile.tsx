@@ -1,9 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import * as constants from "../components/constants";
-import ShowData from "../components/ShowData";
-import ShowProfession from "../components/ShowProfession";
-import ShowPublication from "../components/ShowPublication";
-import ShowResearch from "../components/ShowResearch";
+import ProfileNav from "../components/ProfileNav3";
+import ProfileResume from "../components/ProfileResume";
 
 interface ProfileData {
   name: string;
@@ -22,16 +20,6 @@ interface EditProfileProps {
   students?: string;
   miscellaneous?: string;
 }
-const professionData = [
-  { profession: "B.Tech in Computer Science", dateRange: "2005-2009" },
-  { profession: "M.Tech in Computer Science", dateRange: "2009-2011" },
-  { profession: "Ph.D. in Computer Science", dateRange: "2011-2015" },
-];
-const publicationData = [
-  { Publication: "Paper 1: Deep Learning for Computer Vision" },
-  { Publication: "Paper 2: Natural Language Processing Advances" },
-  { Publication: "Paper 3: AI in Healthcare" },
-];
 
 const EditProfile = (props: EditProfileProps) => {
   const [profileData, setProfileData] = useState<ProfileData>({
@@ -58,8 +46,6 @@ const EditProfile = (props: EditProfileProps) => {
     setProfileData(initialData);
   }, []); // Empty dependency array means this effect runs once after the initial render
 
-  const titleStyleh2 = "text-2xl text-[#0067B3] mt-2 mb-4";
-  const titleStyleh3 = "text-xl  mb-4";
   const handleExit = () => {
     if (fetchedDataOG.current) {
       setProfileData(fetchedDataOG.current); // Reset to original data on cancel
@@ -217,66 +203,16 @@ const EditProfile = (props: EditProfileProps) => {
           </div>
         </div>
       </form>
-      <div className="w-3/5 bg-[#f0f0f0] p-2 text-black hide-scrollbar min-h-20 m-auto  rounded-2xl overflow-y-auto ">
-        {props.researchinterests && (
-          <>
-            <h2 className={titleStyleh2} id="researchinterests">
-              RESEARCH INTERESTS
-            </h2>
-            <p>{props.researchinterests}</p>
-          </>
-        )}
-
-        {props.biosketch && (
-          <>
-            <h2 className={titleStyleh2}>BIO SKETCH</h2>
-            <h3 className={titleStyleh3}>Educational Details</h3>
-            <ShowProfession data={professionData} />
-            <h3 className={titleStyleh3}>Proffessional Background</h3>
-            <ShowProfession data={professionData} />
-          </>
-        )}
-        {props.research && (
-          <>
-            <h2 className={titleStyleh2}>RESEARCH</h2>
-            <ShowResearch />
-            <h3 className={titleStyleh3}>Publications</h3>
-            <ShowPublication data={publicationData} />
-            <h3 className={titleStyleh3}>Patents</h3>
-            <ShowData />
-            <h3 className={titleStyleh3}>Books</h3>
-            <ShowData />
-            <h3 className={titleStyleh3}>Collaborations</h3>
-            <ShowData />
-          </>
-        )}
-        {props.honors && (
-          <>
-            <h2 className={titleStyleh2}>HONORS & AWARDS</h2>
-            <h3 className={titleStyleh3}>Honors</h3>
-            <ShowProfession data={professionData} />
-            <h3 className={titleStyleh3}>Memberships</h3>
-            <ShowProfession data={professionData} />
-          </>
-        )}
-        {props.students && (
-          <>
-            <h2 className={titleStyleh2}>STUDENTS</h2>
-            <h3 className={titleStyleh3}>Supervisions</h3>
-            <ShowProfession data={professionData} />
-            <h3 className={titleStyleh3}>Associate Scholars</h3>
-            <ShowProfession data={professionData} />
-          </>
-        )}
-        {props.miscellaneous && (
-          <>
-            <h2 className={titleStyleh2}>MISCELLANEOUS</h2>
-            <h3 className={titleStyleh3}>Supervisions</h3>
-            <ShowProfession data={professionData} />
-            <h3 className={titleStyleh3}>Associate Scholars</h3>
-            <ShowProfession data={professionData} />
-          </>
-        )}
+      <div className="MuiBox-root flex overflow-hidden h-lvh m-auto w-4/5 justify-around">
+        <ProfileNav />
+        <ProfileResume
+          researchinterests="research"
+          biosketch="hell"
+          honors="f"
+          students="s"
+          miscellaneous="sa"
+          research="hello"
+        />
       </div>
     </>
   );

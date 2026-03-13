@@ -1,16 +1,17 @@
+require("dotenv").config();
 const express = require("express");
 const { Pool } = require("pg");
 
 const app = express();
-const port = 5000; // Choose a different port from the frontend
+const port = process.env.PORT || 5000; // Choose a different port from the frontend
 
 // PostgreSQL connection pool
 const pool = new Pool({
-  user: "your_username", // Replace with your PostgreSQL username
-  host: "localhost",
-  database: "your_database", // Replace with your PostgreSQL database name
-  password: "your_password", // Replace with your PostgreSQL password
-  port: 5432,
+  user: process.env.POSTGRES_USER || "postgres", // Replace with your PostgreSQL username
+  host: process.env.HOST || "localhost",
+  database: process.env.POSTGRES_DB, // Replace with your PostgreSQL database name
+  password: process.env.POSTGRES_PASSWORD, // Replace with your PostgreSQL password
+  port: process.env.POSTGRES_PORT || 5432,
 });
 
 // Middleware to parse JSON bodies
@@ -32,6 +33,19 @@ pool.connect((err, client, release) => {
 
 // Basic API endpoint
 app.get("/", (req, res) => {
+  res.send("Hello from the backend!");
+});
+app.get("/api/data", async (req, res) => {
+  try {
+    const result = await pool.query("SELECT * FROM your_table_name"); // Replace with your actual table name
+    res.json(result.rows);
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send("Server Error");
+  }
+});
+
+app.get("/:profile", (req, res) => {
   res.send("Hello from the backend!");
 });
 
